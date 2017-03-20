@@ -1,0 +1,37 @@
+<footer>
+   <div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}">
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>About</strong></p>
+          <p>This page provides additional site specific information in the recent publication titled: <u><a target='_blank' href="http://www.sciencedirect.com/science/article/pii/S0006320716310138">Recent increases in human pressure and forest loss threaten many Natural World Heritage Sites</a></u>. This is the first global quantitative assessment of how humanity is negatively affecting natural World Heritage sites and here we provide crucial baseline information which is neccessary for their ongoing preservation.</p>
+        </div>
+        <div class="col-md-6">
+          <p><strong>Data sources</strong></p>
+          <p><a target='_blank' href="http://data.globalforestwatch.org/datasets/63f9425c45404c36a23495ed7bef1314">Global Forest Loss 2000 to 2014</a></p>
+          <p><a target='_blank' href="http://wcmc.io/3f3e">Natural World Heritage sites</a></p>
+        </div>
+      </div>
+      <div class="row">
+         {% if articles %}
+           {% if articles[0].modified %}
+             {% set copy_date = articles[0].modified.strftime('%Y') %}
+           {% else %}
+             {% set copy_date = articles[0].date.strftime('%Y') %}
+           {% endif %}
+         {% else %}
+            {% set copy_date = '' %}
+         {% endif %}
+         <hr>
+         <div class="col-xs-10">&copy; {{ copy_date }} {{ AUTHOR }}
+            {%- if CC_LICENSE or CC_LICENSE_DERIVATIVES or CC_LICENSE_COMMERCIAL %}
+              {% from 'includes/cc-license.html' import cc_license_mark %}
+                <p><small>{{ cc_license_mark(cc_name=CC_LICENSE,derivatives=CC_LICENSE_DERIVATIVES,commercial=CC_LICENSE_COMMERCIAL,attr_markup=CC_ATTR_MARKUP,attr_props={'title':SITENAME,'name':article.author if article else AUTHOR,'url':SITEURL,'lang':DEFAULT_LANG}) }}</small></p>
+            {% elif CUSTOM_LICENSE %}
+              <p><small>{{ CUSTOM_LICENSE }}</small></p>
+            {% endif %}
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">{{ _('Back to top') }}</a></p></div>
+      </div>
+   </div>
+</footer>
