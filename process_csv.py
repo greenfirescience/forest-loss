@@ -35,7 +35,7 @@ def get_year(wdpaid):
 	return get_attr(wdpaid, 'status_yr')
 
 def get_country(wdpaid):
-	return get_attr(wdpaid, 'country_name').replace(';', ', ')
+	return get_attr(wdpaid, 'country_name')
 
 
 def make_md_wdpaid(wdpaid):
@@ -44,7 +44,7 @@ def make_md_wdpaid(wdpaid):
 
 	lines = dict()
 	lines['Title'] = get_name(wdpaid)
-	lines['Tags'] = get_country(wdpaid)
+	lines['Tags'] = get_country(wdpaid) + ';'
 	lines['Author'] = 'IUCN, UQ and WCS'
 	lines['Year'] = get_year(wdpaid)
 

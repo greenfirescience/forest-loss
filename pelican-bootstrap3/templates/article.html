@@ -133,7 +133,7 @@
                 <!-- forest loss exp -->
                 <div class="row content-row">
                     <div class='col-md-12 col-sm-12 col-xs-12'>
-                        <h2>Forest loss <small><a href="#fl-exp" role="button" data-toggle="modal"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a></small></h2>
+                        <h2>Forest loss <a href="#fl-exp" role="button" data-toggle="modal"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a></h2>
                     </div>
                 </div>
 
@@ -288,7 +288,7 @@
         .type("line")       // visualization type
         .id("type")         // key for which data is unique on
         .text("forest cover")       // key to use for display text
-        .y({value: "forest loss", range: [0, {{ article.fc }}], label: 'Forest Loss'})     // key to use for y-axis
+        .y({value: "forest loss", label: 'Forest loss in square kilometers'})     // key to use for y-axis
         .x("year")          // key to use for x-axis
         .draw()             // finally, draw the visualization!
 
